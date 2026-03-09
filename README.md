@@ -1,6 +1,9 @@
-Samuel Ogoegbu | Python Developer & Data AnalystProfessional portfolio and codebase for Samuel Ogoegbu, an Economics graduate specializing in data-driven backend solutions and analytical insights.
+Samuel Ogoegbu | Python Developer & Data Analyst
+
+Professional portfolio and codebase for Samuel Ogoegbu, an Economics graduate specializing in data-driven backend solutions and analytical insights.
 
 🚀 **About Me** 
+
 I leverage a strong foundation in Statistical Analysis and Econometrics  to build robust applications and extract actionable data insights. My approach combines the logic of economic modeling with the efficiency of modern Python frameworks.
 - Current Role: Python Instructor at Aceplora, teaching algorithms and data science.
 - Education: B.Sc. in Economics from the University of Uyo.Focus: 
