@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Ogoegbu | Developer Portfolio</title>
+    <style>
+        /* CSS Variables for a cohesive, non-template color palette */
+        :root {
+            --bg-color: #0f172a; /* Deep Slate */
+            --surface-color: #1e293b;
+            --text-main: #cbd5e1;
+            --text-bright: #f8fafc;
+            --accent: #14b8a6; /* Teal */
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            color: var(--text-bright);
+            font-weight: 700;
+        }
+
+        .mono {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #5eead4;
+        }
+
+        /* Layout & Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            border-bottom: none;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin: 1rem 0;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills Layout */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-category ul {
+            list-style-type: none;
+        }
+
+        .skill-category li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Experience Layout */
+        .job {
+            margin-bottom: 3rem;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+        }
+
+        .job-date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .job-list {
+            padding-left: 1.2rem;
+            color: #94a3b8;
+        }
+
+        .job-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Layout */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .project-tech {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            padding: 8rem 0;
+            border-bottom: none;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            transition: background-color 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: rgba(20, 184, 166, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .job-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<main class="container">
+    <section class="hero">
+        <p class="mono">Hi, my name is</p>
+        <h1>Samuel Ogoegbu.</h1>
+        <h2>Python Developer & Data Analyst.</h2>
+        <p>
+            I am a detail-oriented Economics graduate specializing in Python development and data analysis. I build data-driven solutions and extract actionable insights to help organizations thrive. Based in Port Harcourt, Nigeria.
+        </p>
+        <a href="mailto:samuelogoegbu@gmail.com" class="contact-btn">Get In Touch</a>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages & Databases</h3>
+                <ul>
+                    <li>Python </li>
+                    <li>JavaScript </li>
+                    <li>SQL </li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks & Frontend</h3>
+                <ul>
+                    <li>Django & FastAPI </li>
+                    <li>Next JS </li>
+                    <li>HTML5, CSS3 & Bootstrap </li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Data & Tools</h3>
+                <ul>
+                    <li>Pandas & NumPy </li>
+                    <li>Matplotlib & Seaborn </li>
+                    <li>Git, GitHub & Vercel </li>
+                    <li>Looker </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="job">
+            <div class="job-header">
+                <h3 class="job-title">Python Instructor <span class="mono">@ Aceplora </span></h3>
+                <span class="job-date">May 2023 - Present | Port Harcourt, Nigeria </span>
+            </div>
+            <ul class="job-list">
+                <li>Teach Python programming concepts including data structures, algorithms, and data analysis libraries to diverse student groups.</li>
+                <li>Develop comprehensive course materials including slides, coding exercises, and mini-projects focused on real-world applications.</li>
+                <li>Translate complex programming concepts into accessible explanations through practical examples.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3 class="job-title">Software Development Intern <span class="mono">@ Zuri Remote </span></h3>
+                <span class="job-date">June 2022 - September 2022 </span>
+            </div>
+            <ul class="job-list">
+                <li>Collaborated with cross-functional teams to design and develop responsive web applications using Next JS and JavaScript.</li>
+                <li>Built and optimized landing pages with HTML5, CSS3, and Bootstrap ensuring cross-browser compatibility.</li>
+                <li>Gained hands-on experience with Python and Django, building multiple projects hosted on Vercel and GitHub Pages.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <div class="job-header">
+                <h3 class="job-title">Software Development Intern <span class="mono">@ Terra Learning </span></h3>
+                <span class="job-date">July 2021 - October 2021 | Remote </span>
+            </div>
+            <ul class="job-list">
+                <li>Developed and maintained user-friendly web interfaces using modern frontend technologies.</li>
+                <li>Researched and implemented new web architectures and technologies to improve application performance.</li>
+                <li>Applied problem-solving skills to debug and optimize code for better user experience.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <h3>Data Analysis Pipeline</h3>
+                <p>Developed Python scripts for data extraction, cleaning, and analysis to identify patterns and trends in datasets. Created comprehensive dashboards to communicate insights effectively.</p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Responsive Web Applications</h3>
+                <p>Built robust, scalable backend architectures utilizing modern Python frameworks. Successfully deployed projects to cloud platforms with CI/CD integration for seamless updates.</p>
+                <div class="project-tech">
+                    <span>Django</span>
+                    <span>FastAPI</span>
+                    <span>Vercel</span>
+                    <span>GitHub Pages</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>What's Next?</h2>
+        <h3 class="section-title" style="justify-content: center; font-size: 3rem; margin: 1rem 0; border: none;">Get In Touch</h3>
+        <p style="max-width: 500px; margin: 0 auto; color: #94a3b8;">
+            Whether you have a question, a data challenge, or are looking for a Python developer with a strong economic foundation, my inbox is always open.
+        </p>
+        <a href="mailto:samuelogoegbu@gmail.com" class="contact-btn">Say Hello</a>
+
+        <div style="margin-top: 5rem; font-family: var(--font-mono); font-size: 0.8rem; color: #64748b;">
+            <p>Designed & Built by Samuel Ogoegbu </p>
+            <p><a href="https://github.com/ishiukwu" target="_blank" style="color: #64748b;">github.com/ishiukwu </a></p>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>
